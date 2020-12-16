@@ -1,0 +1,98 @@
+<div>
+    <h2>Manage the Locations in Your Stockroom</h2>
+    <p>Manage the locations in your stockroom. Products in your stockroom can be assigned to these locations.
+    </p>
+    <div class='row'>
+        <div class="col-md-8 pd-0">
+            <input class="col-md-10" class='searchInput' type="text" placeholder="Search by Name">
+            <button class="col-md-2" type="button" class="btn btn-info">Search</button>
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-primary addlocation" data-toggle="modal"
+                data-target="#myModal">Add Location</button>
+        </div>
+        <div class="modal" tabindex="-1" role="dialog" id="myModal">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content flex-grow-1">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Location Name</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input class='addname' type="text" placeholder="Enter new name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info">Cancel</button>
+                        <button type="button" class="btn btn-primary addlocation">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class='col-md-12 mt-10 pd-0'>
+            <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="50">
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Location Name</span>
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <a class='datafield'>{{row.location}}</a>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Number of Products</span>
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <a class='datafield'>{{row.producs}}</a>
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Delete</span>
+                    </ng-template>
+                    <ng-template let-row="row" ngx-datatable-cell-template>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </ng-template>
+                </ngx-datatable-column>
+
+            </ngx-datatable>
+        </div>
+        <div class='col-md-12 paginator pd-0'>
+            <nav class='fl-l'>
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Items per Page</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">20</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">50 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">100</a></li>
+                </ul>
+            </nav>
+
+            <nav class='col-md-4 fl-r'>
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Page</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
