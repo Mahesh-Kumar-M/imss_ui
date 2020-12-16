@@ -7,6 +7,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -30,7 +31,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

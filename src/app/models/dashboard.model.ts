@@ -81,10 +81,6 @@ export const HEADER_ITEM_LISTS: DashboardItemDetails[] = [
     {
         id: 3,
         title: `Stock Overview`,
-        description: '$27,136',
-        
-        chartData:[40, 20, 20 , 10,10],
-        chartType: 'pie'
-        
+        description: '',
     }
 ]
