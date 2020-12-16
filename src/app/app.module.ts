@@ -7,6 +7,8 @@ import { HeaderComponent } from './pages/header/header.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -25,12 +27,13 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent
-
-  ],
+    DashboardComponent,
+    ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,8 +4,8 @@
     </p>
     <div class='row'>
         <div class="col-md-8 pd-0">
-            <input class="col-md-10" class='searchInput' type="text" placeholder="Search by Name">
-            <button class="col-md-2" type="button" class="btn btn-info">Search</button>
+            <input class="col-md-10" class='searchInput' type="text"  placeholder="Search by Name">
+            <button class="col-md-2" type="button" class="btn btn-info" (click)='onSearch()'>Search</button>
         </div>
         <div class="col-md-4">
             <button type="button" class="btn btn-primary addlocation" data-toggle="modal"
@@ -33,14 +33,14 @@
     </div>
     <div class='row'>
         <div class='col-md-12 mt-10 pd-0'>
-            <ngx-datatable class="material" [rows]="rows" [columnMode]="'force'" [headerHeight]="50"
-                [footerHeight]="50" [rowHeight]="50">
+            <ngx-datatable class="material" [rows]="data" [columnMode]="'force'"  [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="50" [limit]="5">
                 <ngx-datatable-column [sortable]="false">
                     <ng-template ngx-datatable-header-template>
                         <span>Location Name</span>
                     </ng-template>
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <a class='datafield'>{{row.location}}</a>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <a class='datafield' (click)='onEdit(rowIndex,true)'>{{row.locationName}}</a>
                     </ng-template>
                 </ngx-datatable-column>
 
@@ -48,8 +48,8 @@
                     <ng-template ngx-datatable-header-template>
                         <span>Number of Products</span>
                     </ng-template>
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <a class='datafield'>{{row.producs}}</a>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <a class='datafield' (click)='onEdit(rowIndex, false)'>{{row.stockroomId}}</a>
                     </ng-template>
                 </ngx-datatable-column>
 
@@ -57,8 +57,8 @@
                     <ng-template ngx-datatable-header-template>
                         <span>Delete</span>
                     </ng-template>
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    <ng-template let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <i class="fa fa-trash" aria-hidden="true" (click)='onDelete(rowIndex)'></i>
                     </ng-template>
                 </ngx-datatable-column>
 
