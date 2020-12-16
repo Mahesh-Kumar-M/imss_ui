@@ -1,0 +1,19 @@
+.icon-lg {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem !important
+}
+
+.description {
+    position: absolute;
+    font-size: 2rem;
+    font-size: bold;
+}

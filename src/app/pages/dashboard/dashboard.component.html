@@ -1,1 +1,62 @@
-<p>dashboard works!</p>
+
+<div class="mt">
+    <div class="container-fluid">
+    <div class="shadow-lg bg-white rounded-lg overflow-hidden">
+      <main class="px-md-4" role="main">
+        <!-- <div class="p-4 px-md-0" class="row">
+          
+            <div class=" mt-4 col-sm-4" *ngFor='let item of headerConfigLists'>
+            <div class="card bg-light">
+                <img src="/assets/fpo-card-img-green-gradient.jpg" class="card-img-top" alt="">
+                <h3 class="card-header h5">{{item.title}}</h3> 
+              <div class="card-body center">
+                <p class="card-text text-center description" *ngIf="item.description">{{item.description}}</p>
+               
+                   <canvas baseChart *ngIf="!item.description"
+                          [data]="item.chartData"
+                          [chartType]="item.chartType"></canvas>
+            </div>
+          </div>
+          </div>
+        </div> -->
+        
+        <div class="p-4 px-md-0 row">
+          <h4>What would you like to do today?</h4>
+          <div class="row  row-no-gutters">
+            <div class="mt-4 col-sm-4" *ngFor='let item of dashboardLists'>
+            <div class="card bg-light">
+              <img src="/assets/fpo-card-img-green-gradient.jpg" class="card-img-top" alt="">
+              <h3 class="card-header h5">{{item.title}}</h3>
+  
+              <div class="card-body">
+                <p class="card-text">
+                    <svg *ngIf="!item.input" viewBox="0 0 17 16" class="icon warning-icon icon-lg pr-1 text-danger" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 5zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                      </svg>
+                    {{item.description}}
+                </p>
+                <form class="form-inline" *ngIf="item.input">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" />
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <p class="card-text"><a href="#" class="btn btn-primary" *ngIf="!item.input">{{item.btnText}}</a></p>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  </div>
+  
+  
+  
+  
+  
