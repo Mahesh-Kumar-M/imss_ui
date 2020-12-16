@@ -20,19 +20,13 @@ public mockData = {"message":"List of Location Success","LocationList":[{"locati
     this.options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
       })
     };
-    this.options.headers.append('Access-Control-Allow-Origin','*');
   }
 
   getlocationDetails(payload:any) {
     const url = `${this.LOCATION_URL}/list`
-    // return this._http.post(url, JSON.stringify(payload), this.options)
-    return of(this.mockData)
+    return this._http.post(url, JSON.stringify(payload), this.options)
   }
 
   getProductDetails() {

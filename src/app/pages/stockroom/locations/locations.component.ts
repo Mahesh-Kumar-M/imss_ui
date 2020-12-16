@@ -20,7 +20,7 @@ export class LocationsComponent implements OnInit {
   }
 
   onSearch(){
-alert(this.searchText)
+    alert(this.searchText)
   }
 
   getLocationList(){
@@ -30,11 +30,11 @@ alert(this.searchText)
       userId : 64554 
     }
 
-    this.locationService.getlocationDetails(payload).subscribe(res=>{
+    this.locationService.getlocationDetails(payload).subscribe((res:any)=>{
       if(res && res.LocationList){
         this.data =  res.LocationList;
-        this.calculatePagination();
-        this.data = [...this.data,...this.data,...this.data,...this.data,...this.data]
+        // this.calculatePagination();
+        // this.data = [...this.data,...this.data,...this.data,...this.data,...this.data]
       }
     },()=>{
 
