@@ -6,6 +6,7 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { StockroomComponent } from './stockroom.component';
 import { LocationsComponent } from './locations/locations.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   imports: [
     CommonModule,
     StockroomRoutingModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FormsModule
   ]
 })
 export class StockRoomModule { }

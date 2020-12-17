@@ -9,59 +9,102 @@ import { LocationService } from 'src/app/services/location.service';
 })
 
 export class LocationsComponent implements OnInit {
-  public data:any = [];
-  public pageLimit:number = 20;
-  public searchText:string='';
 
-  constructor(private locationService:LocationService) { }
+  public data: any = [];
+  public pageLimit: number = 20;
+  public searchText: string = '';
+  public locationName: string = '';
+  public addFlow: boolean = true;
+  public selectedIndex: number = 0;
+
+  constructor(private locationService: LocationService) { }
 
   ngOnInit(): void {
-    this.getLocationList();
+    //this.getLocationList();
+    this.onSearch();
   }
 
-  onSearch(){
-    alert(this.searchText)
-  }
-
-  getLocationList(){
-    const payload =  {
-      locationName : "a",
-        stockroomId : "8525",
-      userId : 64554 
-    }
-
-    this.locationService.getlocationDetails(payload).subscribe((res:any)=>{
-      if(res && res.LocationList){
-        this.data =  res.LocationList;
-        // this.calculatePagination();
-        // this.data = [...this.data,...this.data,...this.data,...this.data,...this.data]
+  onSearch() {
+    const payload = {
+      locationName: this.searchText,
+      stockroomId: "8525",
+      userId: 64554
+    };
+    this.locationService.viewLocation(payload).subscribe((res: any) => {
+      if (res && res.LocationList) {
+        this.data = res.LocationList;
       }
-    },()=>{
+    }, () => {
 
     })
   }
 
-  onEdit(index:number, isLocation:Boolean){
-    console.log(index)
-  }
-
-  onDelete(index:number){
-    this.locationService.deleteLocation(this.data[index]).subscribe(res=>{
-      console.log(res)
-    },()=>{
-
-    })
-  }
-
-  updateList(){
-    this.locationService.deleteLocation(this.data).subscribe(res=>{
-      console.log(res)
-    },()=>{
+  addLocation() {
+    const payload = {
+      locationName: this.locationName,
+      stockroomId: "8525",
+      userId: 64554
+    };
+    this.locationService.createLocation(payload).subscribe((res: any) => {
+      this.locationName = '';
+      this.onSearch();
+    }, () => {
 
     })
   }
 
-  calculatePagination(){
+  // getLocationList() {
+  //   const payload = {
+  //     locationName: "a",
+  //     stockroomId: "8525",
+  //     userId: 64554
+  //   }
 
+  //   this.locationService.getlocationDetails(payload).subscribe((res: any) => {
+  //     if (res && res.LocationList) {
+  //       this.data = res.LocationList;
+  //     }
+  //   }, () => {
+
+  //   })
+  // }
+
+  onEdit(index: number, isLocation: Boolean) {
+    this.addFlow = false;
+    this.selectedIndex = index;
+  }
+
+  onDelete(index: number) {
+    const selectedRow = this.data[index];
+    const payload = {
+      locationId: selectedRow.locationId,
+      stockroomId: "8525",
+      userId: 64554
+    };
+    this.locationService.deleteLocation(payload).subscribe(res => {
+      this.onSearch();
+    }, () => {
+
+    })
+  }
+
+  updateLocation() {
+    const selectedRow = this.data[this.selectedIndex];
+    const payload = {
+      locationId: selectedRow.locationId,
+      locationName: this.locationName,
+      stockroomId: "8525",
+      userId: 64554
+    }
+    this.locationService.updateLocation(payload).subscribe(res => {
+      this.locationName = '';
+      this.onSearch();
+    }, () => {
+
+    })
+  }
+
+  onAdd() {
+    this.addFlow = true;
   }
 }
