@@ -4,28 +4,33 @@
     </p>
     <div class='row'>
         <div class="col-md-8 pd-0">
-            <input class="col-md-10" class='searchInput' type="text"  placeholder="Search by Name">
+            <input class="col-md-10" class='searchInput' [(ngModel)]="searchText" type="text"
+                placeholder="Search by Name">
             <button class="col-md-2" type="button" class="btn btn-info" (click)='onSearch()'>Search</button>
         </div>
         <div class="col-md-4">
-            <button type="button" class="btn btn-primary addlocation" data-toggle="modal"
-                data-target="#myModal">Add Location</button>
+            <button type="button" class="btn btn-primary addlocation" data-toggle="modal" data-target="#myModal"
+                (click)='onAdd()'>Add Location</button>
         </div>
         <div class="modal" tabindex="-1" role="dialog" id="myModal">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content flex-grow-1">
                     <div class="modal-header">
-                        <h5 class="modal-title">Add Location Name</h5>
+                        <h5 *ngIf='addFlow' class="modal-title">Add Location Name</h5>
+                        <h5 *ngIf='!addFlow' class="modal-title">Update Location Name</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <input class='addname' type="text" placeholder="Enter new name">
+                        <input class='addname' type="text" placeholder="Enter new name" [(ngModel)]="locationName">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-info">Cancel</button>
-                        <button type="button" class="btn btn-primary addlocation">Save</button>
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+                        <button *ngIf='addFlow' type="button" class="btn btn-primary addlocation"
+                            (click)='addLocation()'>Save</button>
+                        <button *ngIf='!addFlow' type="button" class="btn btn-primary addlocation"
+                            (click)='updateLocation()'>Save</button>
                     </div>
                 </div>
             </div>
@@ -33,14 +38,15 @@
     </div>
     <div class='row'>
         <div class='col-md-12 mt-10 pd-0'>
-            <ngx-datatable class="material" [rows]="data" [columnMode]="'force'"  [headerHeight]="50"
-                [footerHeight]="50" [rowHeight]="50" [limit]="5">
+            <ngx-datatable class="material" [rows]="data" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                [rowHeight]="50" [limit]="5">
                 <ngx-datatable-column [sortable]="false">
                     <ng-template ngx-datatable-header-template>
                         <span>Location Name</span>
                     </ng-template>
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <a class='datafield' (click)='onEdit(rowIndex,true)'>{{row.locationName}}</a>
+                        <a data-toggle="modal" data-target="#myModal" class='datafield'
+                            (click)='onEdit(rowIndex,true)'>{{row.locationName}}</a>
                     </ng-template>
                 </ngx-datatable-column>
 
@@ -49,7 +55,7 @@
                         <span>Number of Products</span>
                     </ng-template>
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <a class='datafield' (click)='onEdit(rowIndex, false)'>{{row.stockroomId}}</a>
+                        <a class='datafield' (click)='onEdit(rowIndex, false)'>{{row.productCount}}</a>
                     </ng-template>
                 </ngx-datatable-column>
 
@@ -57,8 +63,8 @@
                     <ng-template ngx-datatable-header-template>
                         <span>Delete</span>
                     </ng-template>
-                    <ng-template let-row="row"  let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <i class="fa fa-trash" aria-hidden="true" (click)='onDelete(rowIndex)'></i>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        <i class="fa fa-trash cr-p" aria-hidden="true" (click)='onDelete(rowIndex)'></i>
                     </ng-template>
                 </ngx-datatable-column>
 

@@ -71,12 +71,14 @@
     height: 40px;
     margin-right: 12px;
     width: 50%;
+    padding: 0px 5px;
 }
 
 .addname {
     height: 40px;
     margin-right: 12px;
     width: 100%;
+    padding: 0px 5px;
 }
 
 .addlocation {
@@ -151,4 +153,8 @@ datatable-footer.datatable-footer {
 
 .modal {
     top: 100px;
+}
+
+.cr-p{
+    cursor: pointer;
 }
