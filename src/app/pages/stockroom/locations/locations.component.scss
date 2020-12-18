@@ -52,7 +52,8 @@
 }
 
 .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
-    background-color: rgba(85, 85, 85, 1);
+    background-color: #343a40;
+    border-color: #454d55;
     color: #fff;
     font-size: 15px;
     font-weight: normal;
@@ -110,4 +111,7 @@ datatable-footer.datatable-footer {
 
 .modal-header .close{
     outline: none;
+}
+
+.delete-icon{
 }

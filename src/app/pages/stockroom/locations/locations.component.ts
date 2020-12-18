@@ -16,6 +16,9 @@ export class LocationsComponent implements OnInit {
   public locationName: string = '';
   public addFlow: boolean = true;
   public selectedIndex: number = 0;
+  
+  
+  public header: string = 'Manage1';
 
   constructor(private locationService: LocationService) { }
 

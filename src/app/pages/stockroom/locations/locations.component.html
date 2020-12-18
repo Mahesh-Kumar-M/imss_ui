@@ -1,47 +1,23 @@
-<div>
-    <h2>Manage the Locations in Your Stockroom</h2>
-    <p>Manage the locations in your stockroom. Products in your stockroom can be assigned to these locations.
-    </p>
-    <div class='row'>
-        <div class="col-md-8 pd-0">
-            <input class="col-md-10" class='searchInput' [(ngModel)]="searchText" type="text"
-                placeholder="Search by Name">
-            <button class="col-md-2" type="button" class="btn btn-info" (click)='onSearch()'>Search</button>
-        </div>
-        <div class="col-md-4">
-            <button type="button" class="btn btn-primary addlocation" data-toggle="modal" data-target="#myModal"
-                (click)='onAdd()'>Add Location</button>
-        </div>
-        <div class="modal" tabindex="-1" role="dialog" id="myModal">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content flex-grow-1">
-                    <div class="modal-header">
-                        <h5 *ngIf='addFlow' class="modal-title">Add Location Name</h5>
-                        <h5 *ngIf='!addFlow' class="modal-title">Update Location Name</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <input class='addname' type="text" placeholder="Enter new name" [(ngModel)]="locationName">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
-                        <button *ngIf='addFlow' type="button" class="btn btn-primary addlocation"
-                            (click)='addLocation()'>Save</button>
-                        <button *ngIf='!addFlow' type="button" class="btn btn-primary addlocation"
-                            (click)='updateLocation()'>Save</button>
+<main class="col-xs-12 col-md-12 px-md-4" role="main">
+    <div class="p-4 px-md-0">
+        <h2>Manage the locations in your stockroom.</h2>
+        <p>Products in your stockroom can be assigned to these locations.</p>
+
+        <div class="row justify-content-lg-between mt-4">
+            <div class="col-xs-12 col-md-6">
+                <div class="input-group input-group-sm mb-2">
+                    <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by name">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-primary" (click)='onSearch()' type="button">Search</button>
                     </div>
                 </div>
             </div>
+            <div class="col-xs-12 col-md-auto">
+                <button class="btn btn-primary mb-2" type="button" data-toggle="modal"
+                    data-target="#addLocationModal">Add Location</button>
+            </div>
         </div>
-    </div>
-    <div class='row'>
-        <span class='col-md-2'>Select / Deselect All</span>
-        <span class='col-md-10'>View Listing:   Condensed | Expanded</span>
-    </div>
-    <div class='row'>
-        <div class='col-md-12 mt-10 pd-0'>
+        <div class="table-responsive">
             <ngx-datatable class="material" [rows]="data" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
                 [rowHeight]="50" [limit]="5">
                 <ngx-datatable-column [sortable]="false">
@@ -49,7 +25,7 @@
                         <span>Location Name</span>
                     </ng-template>
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <a data-toggle="modal" data-target="#myModal" class='datafield'
+                        <a data-toggle="modal" data-target="#addLocationModal" class='datafield'
                             (click)='onEdit(rowIndex,true)'>{{row.locationName}}</a>
                     </ng-template>
                 </ngx-datatable-column>
@@ -59,7 +35,7 @@
                         <span>Number of Products</span>
                     </ng-template>
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <a class='datafield' (click)='onEdit(rowIndex, false)'>{{row.productCount}}</a>
+                        {{row.productCount}}
                     </ng-template>
                 </ngx-datatable-column>
 
@@ -68,41 +44,47 @@
                         <span>Delete</span>
                     </ng-template>
                     <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <i class="fa fa-trash cr-p" aria-hidden="true" (click)='onDelete(rowIndex)'></i>
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        <button (click)='onDelete(rowIndex)' class="btn btn-link py-0" type="button"
+                            aria-label="Delete Location Name 2">
+                            <svg class="icon delete-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 16 16">
+                                <path
+                                    d="M16,2H11V0H5V2H0V3H2V13.5A2.5,2.5,0,0,0,4.5,16h7A2.5,2.5,0,0,0,14,13.5V3h2ZM6,1h4V2H6Zm7,12.5A1.5,1.5,0,0,1,11.5,15h-7A1.5,1.5,0,0,1,3,13.5V3H13Z" />
+                                <polygon points="8.51 14 7.5 14 7.5 13.5 7.5 4 8.49 4 8.51 4.5 8.51 14" />
+                                <polygon points="11.51 14 10.51 14 10.49 13.5 10.49 4 11.49 4 11.51 4.5 11.51 14" />
+                                <polygon points="5.5 14 4.5 14 4.5 13.5 4.5 4 5.5 4 5.5 4.5 5.5 14" />
+                            </svg>
+                        </button>
                     </ng-template>
                 </ngx-datatable-column>
-
             </ngx-datatable>
         </div>
-        <div class='col-md-12 paginator pd-0'>
-            <nav class='fl-l'>
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Items per Page</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">20</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">50 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">100</a></li>
-                </ul>
-            </nav>
+    </div>
+</main>
 
-            <nav class='col-md-4 fl-r'>
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Page</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+<div class="modal" tabindex="-1" role="dialog" id="addLocationModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 *ngIf='addFlow' class="modal-title">Add location name</h5>
+                <h5 *ngIf='!addFlow' class="modal-title">Update location name</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="locationNameInput">Enter new name</label>
+                    <input type="text" class="form-control" [(ngModel)]="locationName" id="locationNameInput"
+                        placeholder="Location Name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" sdata-dismiss="modal">Cancel</button>
+                <button type="button" *ngIf='addFlow' class="btn btn-primary" (click)='addLocation()'>Save</button>
+                <button type="button" *ngIf='!addFlow' class="btn btn-primary" (click)='updateLocation()'>Save</button>
+            </div>
         </div>
     </div>
 </div>
