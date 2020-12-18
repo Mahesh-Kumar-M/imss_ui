@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardItemDetails, DASHBOARD_ITEM_LISTS, HEADER_ITEM_LISTS } from 'src/app/models/dashboard.model';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
+import { HeaderTitleService } from 'src/app/services/header/header-title.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -26,12 +27,13 @@ export class DashboardComponent implements OnInit {
   headerConfigLists: DashboardItemDetails[] = HEADER_ITEM_LISTS;
 
 
-  constructor() { 
+  constructor(private headerTitleService: HeaderTitleService) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
   }
 
   ngOnInit(): void {
+    this.headerTitleService.setTitle('Welcome, First LastName');
   }
 
 }
