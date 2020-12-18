@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class LocationService {
-
-  public LOCATION_URL = 'https://vsr-stage4.vwr.com/vsr/wservice/v1/location'
-  private options: any;
-
-  constructor(private _http: HttpClient,) {
+export class StockroomService {
+  LOCATION_URL;
+  constructor(private _http: HttpClient) {
     this.setRequestOptionsCCToken();
-  }
+    this.LOCATION_URL = environment.LOCATION_URL;
+   }
+
+
+
+  private options: any;
 
   private setRequestOptionsCCToken() {
     this.options = {
@@ -66,5 +67,4 @@ export class LocationService {
     return this._http
       .post(url, JSON.stringify(data), this.options);
   }
-
 }

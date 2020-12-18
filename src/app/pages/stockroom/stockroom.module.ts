@@ -8,6 +8,7 @@ import { LocationsComponent } from './locations/locations.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProductsComponent } from './products/products.component';
     CommonModule,
     StockroomRoutingModule,
     NgxDatatableModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 })
 export class StockRoomModule { }

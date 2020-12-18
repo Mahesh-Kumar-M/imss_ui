@@ -59,6 +59,7 @@
                     </ng-template>
                 </ngx-datatable-column>
             </ngx-datatable>
+            <app-paginator [items]="locations" (changePage)="onPageIndexChange($event)"></app-paginator>
         </div>
     </div>
 </main>

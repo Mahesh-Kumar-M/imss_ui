@@ -1,59 +1,65 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { LocationService } from 'src/app/services/location.service';
+import { StockroomService } from '../stockroom.service';
 
 @Component({
   selector: 'app-locations',
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
-
 export class LocationsComponent implements OnInit {
+  data: any = [];
+  searchText: string = '';
+  pageSize = 20;
+  currentPage = 1;
+  locations: any[] = [];
 
-  public data: any = [];
-  public pageLimit: number = 20;
-  public searchText: string = '';
-  public locationName: string = '';
-  public addFlow: boolean = true;
-  public selectedIndex: number = 0;
-  
-  
-  public header: string = 'Manage1';
+  locationName: string = '';
+  addFlow: boolean = true;
+  selectedIndex: number = 0;
 
-  constructor(private locationService: LocationService) { }
+  constructor(private stockroomService: StockroomService) { }
 
   ngOnInit(): void {
-    //this.getLocationList();
     this.onSearch();
+  }
+
+  onPageIndexChange(pageData: any) {
+    console.log(pageData)
+    this.data = pageData.pageOfItems;
+    this.pageSize = pageData.pageSize;
+    this.currentPage = pageData.currPage;
   }
 
   onSearch() {
     const payload = {
       locationName: this.searchText,
-      stockroomId: "8525",
-      userId: 64554
+      stockroomId: '8525',
+      userId: 64554,
     };
-    this.locationService.viewLocation(payload).subscribe((res: any) => {
-      if (res && res.LocationList) {
-        this.data = res.LocationList;
-      }
-    }, () => {
-
-    })
+    this.stockroomService.viewLocation(payload).subscribe(
+      (res: any) => {
+        if (res && res.LocationList) {
+          this.locations = res.LocationList;
+        }
+      },
+      () => { }
+    );
   }
 
   addLocation() {
     const payload = {
       locationName: this.locationName,
-      stockroomId: "8525",
-      userId: 64554
+      stockroomId: '8525',
+      userId: 64554,
     };
-    this.locationService.createLocation(payload).subscribe((res: any) => {
-      this.locationName = '';
-      this.onSearch();
-    }, () => {
-
-    })
+    this.stockroomService.createLocation(payload).subscribe(
+      (res: any) => {
+        this.locationName = '';
+        this.onSearch();
+      },
+      () => { }
+    );
   }
 
   // getLocationList() {
@@ -63,7 +69,7 @@ export class LocationsComponent implements OnInit {
   //     userId: 64554
   //   }
 
-  //   this.locationService.getlocationDetails(payload).subscribe((res: any) => {
+  //   this.stockroomService.getlocationDetails(payload).subscribe((res: any) => {
   //     if (res && res.LocationList) {
   //       this.data = res.LocationList;
   //     }
@@ -81,14 +87,15 @@ export class LocationsComponent implements OnInit {
     const selectedRow = this.data[index];
     const payload = {
       locationId: selectedRow.locationId,
-      stockroomId: "8525",
-      userId: 64554
+      stockroomId: '8525',
+      userId: 64554,
     };
-    this.locationService.deleteLocation(payload).subscribe(res => {
-      this.onSearch();
-    }, () => {
-
-    })
+    this.stockroomService.deleteLocation(payload).subscribe(
+      (res) => {
+        this.onSearch();
+      },
+      () => { }
+    );
   }
 
   updateLocation() {
@@ -96,15 +103,16 @@ export class LocationsComponent implements OnInit {
     const payload = {
       locationId: selectedRow.locationId,
       locationName: this.locationName,
-      stockroomId: "8525",
-      userId: 64554
-    }
-    this.locationService.updateLocation(payload).subscribe(res => {
-      this.locationName = '';
-      this.onSearch();
-    }, () => {
-
-    })
+      stockroomId: '8525',
+      userId: 64554,
+    };
+    this.stockroomService.updateLocation(payload).subscribe(
+      (res) => {
+        this.locationName = '';
+        this.onSearch();
+      },
+      () => { }
+    );
   }
 
   onAdd() {
