@@ -5,7 +5,7 @@ import { LocationService } from 'src/app/services/location.service';
   selector: 'app-locations',
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 
 export class LocationsComponent implements OnInit {
@@ -16,6 +16,9 @@ export class LocationsComponent implements OnInit {
   public locationName: string = '';
   public addFlow: boolean = true;
   public selectedIndex: number = 0;
+  
+  
+  public header: string = 'Manage1';
 
   constructor(private locationService: LocationService) { }
 

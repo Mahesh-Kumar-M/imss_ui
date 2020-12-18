@@ -7,13 +7,15 @@ import { StockroomComponent } from './stockroom.component';
 import { LocationsComponent } from './locations/locations.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
     SideMenuComponent,
     SubHeaderComponent,
     StockroomComponent,
-    LocationsComponent
+    LocationsComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,

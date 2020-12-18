@@ -1,7 +1,12 @@
-<app-sub-header></app-sub-header>
-<div class='row'>
-    <app-side-menu class="col-md-3"></app-side-menu>
-    <div class="col-md-9">
-        <router-outlet></router-outlet>
+<div class="flex-grow-1 mt-n5">
+    <div class="container-fluid">
+        <div class="shadow-lg bg-white rounded-lg overflow-hidden">
+            <div class="row">
+                <app-side-menu class="col-md-3"></app-side-menu>
+                <div class="col-md-9">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

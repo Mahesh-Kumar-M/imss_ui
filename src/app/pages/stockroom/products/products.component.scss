@@ -1,49 +1,27 @@
-
-.location {
-    padding: 6% 7%;
-    font-family: 'ArialMT', 'Arial', sans-serif;
+.addlocation {
+    color: #fff;
+    background-color: #0064c8;
+    border-color: #0064c8;
+    float: right;
 }
 
 .row {
     margin: 0;
 }
 
-.btn {
-    border-radius: 0;
-}
-
-.header {
-    font-size: 40px;
-}
-
 .searchInput {
-    height: 40px;
-    margin-right: 12px;
-    width: 50%;
+    height: 30px;
     padding: 0px 5px;
 }
 
-.addname {
-    height: 40px;
-    margin-right: 12px;
-    width: 100%;
-    padding: 0px 5px;
+.filters{
+    background-color:#236192;
+    color:#fff;
+    padding: 5px 0px;
 }
 
-.addlocation {
-    color: #fff;
-    background-color: #0064c8;
-    border-color: #0064c8;
-    float: right;
-    float: right;
-}
-
-.mt-10 {
-    margin-top: 10px;
-}
-
-.paginator {
-    margin-top: 5px;
+.h-30{
+    height:30px;
 }
 
 .ngx-datatable.material {
@@ -52,8 +30,7 @@
 }
 
 .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
-    background-color: #343a40;
-    border-color: #454d55;
+    background-color: rgba(85, 85, 85, 1);
     color: #fff;
     font-size: 15px;
     font-weight: normal;
@@ -97,21 +74,6 @@ datatable-footer.datatable-footer {
     padding: 0;
 }
 
-.ml-30 {
-    margin-left: 30px;
-}
-
-.modal {
-    top: 100px;
-}
-
-.cr-p{
-    cursor: pointer;
-}
-
-.modal-header .close{
-    outline: none;
-}
-
-.delete-icon{
+.mt-10{
+margin-top: 10px;
 }
