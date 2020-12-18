@@ -1,0 +1,40 @@
+<div class="row justify-content-between">
+  <div>
+    <nav class='fl-l'>
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Items per Page</a>
+        </li>
+        <li class="page-item" [ngClass]="{active:pageSize === 20}"><a class="page-link"
+            (click)="changePageSize(20)">20</a></li>
+        <li class="page-item" [ngClass]="{active:pageSize === 50}"><a class="page-link" (click)="changePageSize(50)">50
+          </a>
+        </li>
+        <li class="page-item" [ngClass]="{active:pageSize === 100}"><a class="page-link"
+            (click)="changePageSize(100)">100</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="row">
+    <span>Page</span>
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <!-- <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item first-item">
+        <a (click)="setPage(1)" class="page-link">First</a>
+    </li> -->
+      <li [ngClass]="{disabled:pager.currentPage === 1}" class="page-item previous-item">
+        <a (click)="setPage(pager.currentPage - 1)" class="page-link">Previous</a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}"
+        class="page-item number-item">
+        <a (click)="setPage(page)" class="page-link">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item next-item">
+        <a (click)="setPage(pager.currentPage + 1)" class="page-link">Next</a>
+      </li>
+      <!-- <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="page-item last-item">
+        <a (click)="setPage(pager.totalPages)" class="page-link">Last</a>
+    </li> -->
+    </ul>
+  </div>
+</div>
