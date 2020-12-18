@@ -5,7 +5,7 @@ import { LocationService } from 'src/app/services/location.service';
   selector: 'app-locations',
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 
 export class LocationsComponent implements OnInit {

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { StockroomComponent } from './stockroom.component';
 import { LocationsComponent } from './locations/locations.component';
+import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
   {
     path: 'locations',
     component: LocationsComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
   }
   ]
 }]

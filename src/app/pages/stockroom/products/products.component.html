@@ -1,0 +1,84 @@
+<div>
+    <div class='row'>
+        <h2 class='col-sm-12 col-md-6'>Your Stockroom Products</h2>
+        <div class='col-sm-12 col-md-6'>
+        <button type="button" class="btn btn-primary addlocation">Add Location</button>
+        </div>
+    </div>
+    <div class='row filters'>
+        <div class='col-sm-12 col-md-5'>
+            <input class="col-md-9 searchInput" type="text"
+                placeholder="Search by Name or Catalog #">
+            <button type="button" class="btn btn-info col-md-3">Search</button>
+        </div>
+        <div class='col-sm-12 col-md-3'>
+            <span> Filter:</span>
+            <select class='h-30'>
+                <option *ngFor="let item of locations" [value]="item">{{item}}</option>
+            </select>
+        </div>
+        <div class='col-sm-12 col-md-4'>
+            <span> Show:</span>
+            <select class='h-30'>
+                <option *ngFor="let item of locations" [value]="item">{{item}}</option>
+            </select>
+        </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-12 mt-10 pd-0'>
+            <ngx-datatable class="material" [rows]="data" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+                [rowHeight]="50" [limit]="5">
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Description</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Catalog #</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Reorder Point</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Max Quantity</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Current Inventory</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column [sortable]="false">
+                    <ng-template ngx-datatable-header-template>
+                        <span>Status</span>
+                    </ng-template>
+                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+                        {{row.locationName}}
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+            </div>
+            </div>
+</div>

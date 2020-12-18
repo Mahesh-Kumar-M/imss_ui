@@ -3,6 +3,6 @@
     <ul class='menuItems'>
         <li *ngFor="let item of menuItems" class="menu-item">
             <i class='{{item.icon}}'></i>
-            <a href="#">{{item.name}}</a></li>
+            <a [routerLink]="item.link">{{item.name}}</a></li>
     </ul>
 </div>
