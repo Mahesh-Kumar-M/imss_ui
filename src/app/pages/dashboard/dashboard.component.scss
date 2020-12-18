@@ -26,8 +26,8 @@
 }
 .bg-light {
     text-align: center;
-    border: 0 !important;
-    background-color: rgba(242, 242, 242, 1) !important;
+    // border: 0 !important;
+    // background-color: rgba(242, 242, 242, 1) !important;
 }
 
 .card-title {
@@ -37,10 +37,14 @@
 
 .card-header {
     background-color: rgba(242, 242, 242, 1) !important;
-    border-bottom: 0 !important;
+    // border-bottom: 0 !important;
     font-size: 18px;
     font-weight: bold;
 }
 .heading {
     font-weight: bold;
+}
+
+.mt-n5 {
+    margin-top: -5rem!important;
 }

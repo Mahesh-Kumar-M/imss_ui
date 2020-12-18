@@ -1,0 +1,21 @@
+@media (min-width: 992px) { 
+    .footer {
+        margin-top: 3em
+    }
+}
+
+// @media (max-width: 991.98px) {
+//     .footer {
+//         padding-bottom: 80px;
+//     }
+// }
+
+.footer svg {
+    margin-bottom: 1em;
+    max-width: 240px;
+    max-height: 40px;
+}
+svg {
+    overflow: hidden;
+    vertical-align: middle;
+}
