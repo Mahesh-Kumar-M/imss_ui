@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { StockroomService } from '../stockroom.service';
 
 @Component({
@@ -8,6 +8,9 @@ import { StockroomService } from '../stockroom.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class LocationsComponent implements OnInit {
+
+  @ViewChild('close') close: ElementRef<HTMLElement>;
+
   data: any = [];
   searchText: string = '';
   pageSize = 20;
@@ -17,7 +20,6 @@ export class LocationsComponent implements OnInit {
   locationName: string = '';
   addFlow: boolean = true;
   selectedIndex: number = 0;
-
   constructor(private stockroomService: StockroomService) { }
 
   ngOnInit(): void {
@@ -57,6 +59,7 @@ export class LocationsComponent implements OnInit {
       (res: any) => {
         this.locationName = '';
         this.onSearch();
+        this.closeModal();
       },
       () => { }
     );
@@ -81,6 +84,7 @@ export class LocationsComponent implements OnInit {
   onEdit(index: number, isLocation: Boolean) {
     this.addFlow = false;
     this.selectedIndex = index;
+    this.locationName = this.data[index].locationName;
   }
 
   onDelete(index: number) {
@@ -108,14 +112,21 @@ export class LocationsComponent implements OnInit {
     };
     this.stockroomService.updateLocation(payload).subscribe(
       (res) => {
-        this.locationName = '';
+        // this.locationName = '';
         this.onSearch();
+        this.closeModal();
       },
       () => { }
     );
   }
 
   onAdd() {
+    this.locationName = '';
     this.addFlow = true;
   }
+
+  closeModal() {
+    let el: HTMLElement = this.close.nativeElement;
+    el.click();
+}
 }

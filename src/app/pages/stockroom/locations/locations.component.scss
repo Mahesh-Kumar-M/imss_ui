@@ -116,3 +116,8 @@ datatable-footer.datatable-footer {
 svg.icon.delete-icon {
     color: #0064c8 !important   ;
 }
+
+.datatable-body.datatable-body{
+    height: 400px !important;
+    overflow-y: auto;
+}
