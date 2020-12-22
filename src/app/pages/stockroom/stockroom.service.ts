@@ -34,9 +34,9 @@ export class StockroomService {
     return this._http.post(url, JSON.stringify(payload), this.options);
   }
 
-  getProductDetails() {
-    const url = `${this.LOCATION_URL}/productDetails`;
-    return this._http.get(url, this.options);
+  getProductDetails(payload:any) {
+    const url = `${this.LOCATION_URL}/product/view`;
+    return this._http.post(url, JSON.stringify(payload), this.options);
   }
 
   viewLocation(payload:any) {

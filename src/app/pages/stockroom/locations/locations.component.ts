@@ -62,21 +62,21 @@ export class LocationsComponent implements OnInit {
     );
   }
 
-  // getLocationList() {
-  //   const payload = {
-  //     locationName: "a",
-  //     stockroomId: "8525",
-  //     userId: 64554
-  //   }
+  getLocationList() {
+    const payload = {
+      locationName: "a",
+      stockroomId: "8525",
+      userId: 64554
+    }
 
-  //   this.stockroomService.getlocationDetails(payload).subscribe((res: any) => {
-  //     if (res && res.LocationList) {
-  //       this.data = res.LocationList;
-  //     }
-  //   }, () => {
+    this.stockroomService.getlocationDetails(payload).subscribe((res: any) => {
+      if (res && res.LocationList) {
+        this.data = res.LocationList;
+      }
+    }, () => {
 
-  //   })
-  // }
+    })
+  }
 
   onEdit(index: number, isLocation: Boolean) {
     this.addFlow = false;
