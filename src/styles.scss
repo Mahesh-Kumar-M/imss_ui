@@ -61,3 +61,13 @@ html,body { margin: 0px !important; height: 100%; }
 .menu-item:hover {
     background-color: #e8e8e8;
 }
+
+.btn-primary:hover {
+    background-image: linear-gradient(to right, #00d649 0%, #2ec4ff 100%);
+    background-repeat: repeat-x;
+    border-color: #00d649;
+}
+
+.table-responsive {
+    height: 530px;
+}

@@ -1,174 +1,180 @@
-        <main class="col-xs-12 col-md-12 px-md-4" role="main">
-          <div class="p-4 px-md-0">
-            <div class="d-lg-flex justify-content-lg-between align-items-center">
-                <h2>Your Stockroom Products</h2>
-                <button class="btn btn-primary" type="button">Add Product</button>
-            </div>
+<main class="col-xs-12 col-md-12 px-md-4" role="main">
+  <div class="p-4 px-md-0">
+    <div class="d-lg-flex justify-content-lg-between align-items-center">
+      <h2>Your Stockroom Products</h2>
+      <button class="btn btn-primary" type="button">Add Product</button>
+    </div>
 
-            <div class="row justify-content-lg-between mt-4">
-              <div class="col-xs-12 col-lg-5">
-                <div class="input-group input-group-sm mb-2">
-                  <input type="text" class="form-control" placeholder="Search by name or catalog #">
-                  <div class="input-group-append">
-                    <button class="btn btn-outline-primary" type="button">Search</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xs-12 col-lg-4">
-                <div class="input-group input-group-sm mb-2 mb-lg-0">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="filterInputSelect">Filter</label>
-                  </div>
-                  <select class="custom-select" id="filterInputSelect">
-                    <option value="">Choose location...</option>
-                    <option value="1">Left Cabinet</option>
-                    <option value="2">Right Cabinet</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-xs-12 col-lg-3">
-                <div class="input-group input-group-sm mb-2 mb-lg-0">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="showInputSelect">Show</label>
-                  </div>
-                  <select class="custom-select" id="showInputSelect">
-                    <option value="1" selected>All Products</option>
-                    <option value="2">Available Only</option>
-                    <option value="3">Disabled Only</option>
-                    <option value="4">Products Below Reorder</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="small my-2"><a href="#">Select / Deselect All</a></div>
-
-            <div class="table-responsive">
-                <ngx-datatable class="material" [rows]="data" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
-                [rowHeight]="50" [limit]="5">
-                <ngx-datatable-column [sortable]="false" [width]="50">
-                    <ng-template ngx-datatable-header-template>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <div class="form-check">
-                            <input class="form-check-input position-static" type="checkbox" value="option3" aria-label="Select row 3">
-                          </div>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Description</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Catalog #</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-                
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Location</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-
-
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Reorder Point</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Max Quantity</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Current Inventory</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        {{row.locationName}}
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Status</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <!-- <span class="badge badge-success">Available</span> -->
-                        <span class="badge badge-danger">Disabled</span>
-                    </ng-template>
-                </ngx-datatable-column>
-                <ngx-datatable-column [sortable]="false">
-                    <ng-template ngx-datatable-header-template>
-                        <span>Delete</span>
-                    </ng-template>
-                    <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                        <button class="btn btn-link py-0" type="button"
-                            aria-label="Delete Location Name 2">
-                            <svg class="icon delete-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                viewBox="0 0 16 16">
-                                <path
-                                    d="M16,2H11V0H5V2H0V3H2V13.5A2.5,2.5,0,0,0,4.5,16h7A2.5,2.5,0,0,0,14,13.5V3h2ZM6,1h4V2H6Zm7,12.5A1.5,1.5,0,0,1,11.5,15h-7A1.5,1.5,0,0,1,3,13.5V3H13Z" />
-                                <polygon points="8.51 14 7.5 14 7.5 13.5 7.5 4 8.49 4 8.51 4.5 8.51 14" />
-                                <polygon points="11.51 14 10.51 14 10.49 13.5 10.49 4 11.49 4 11.51 4.5 11.51 14" />
-                                <polygon points="5.5 14 4.5 14 4.5 13.5 4.5 4 5.5 4 5.5 4.5 5.5 14" />
-                            </svg>
-                        </button>
-                    </ng-template>
-                </ngx-datatable-column>
-            </ngx-datatable>
-            <!-- <app-paginator [items]="locations" (changePage)="onPageIndexChange($event)"></app-paginator> -->
-            </div>
-
-            <div class="row mt-2 mb-4">
-              <div class="col">
-                <div class="d-flex align-items-center">
-                  <strong class="pr-2">With selected: </strong> <button class="btn btn-outline-primary mr-2" type="button">Print Barcodes</button> <button class="btn btn-outline-primary mr-2" type="button">Replenish</button>
-                </div>
-              </div>
-              <div class="col">
-                <div class="d-flex align-items-center justify-content-lg-end">
-                  <strong class="pr-2">Print/Export Stockroom:</strong>
-                  <div class="btn btn-link px-0 pr-2">
-                    <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.93 16">
-                        <path d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z"/>
-                      </svg>
-                    <span class="sr-only">Print Stockroom</span>
-                  </div>
-                  <div class="btn btn-link px-0 pr-2">
-                    <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.93 16">
-                        <path d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z"/>
-                      </svg>
-                    <span class="sr-only">Export Stockroom as PDF</span>
-                  </div>
-                  <div class="btn btn-link px-0 pr-2">
-                    <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.93 16">
-                        <path d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z"/>
-                      </svg>
-                    <span class="sr-only">Export Stockroom as Spreadsheet</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+    <div class="row justify-content-lg-between mt-4">
+      <div class="col-xs-12 col-lg-5">
+        <div class="input-group input-group-sm mb-2">
+          <input type="text" class="form-control" placeholder="Search by name or catalog #">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="button">Search</button>
           </div>
-        </main>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-4">
+        <div class="input-group input-group-sm mb-2 mb-lg-0">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="filterInputSelect">Filter</label>
+          </div>
+          <select class="custom-select" id="filterInputSelect">
+            <option value="">Choose location...</option>
+            <option value="1">Left Cabinet</option>
+            <option value="2">Right Cabinet</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <div class="input-group input-group-sm mb-2 mb-lg-0">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="showInputSelect">Show</label>
+          </div>
+          <select class="custom-select" id="showInputSelect">
+            <option value="1" selected>All Products</option>
+            <option value="2">Available Only</option>
+            <option value="3">Disabled Only</option>
+            <option value="4">Products Below Reorder</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="small my-2"><a href="#">Select / Deselect All</a></div>
+
+    <div class="table-responsive">
+      <ngx-datatable class="material" [rows]="data" [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50"
+        [rowHeight]="50">
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            <div class="form-check">
+              <input class="form-check-input position-static" type="checkbox" value="option3" aria-label="Select row 3">
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Description</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.catalogNo}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Catalog #</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.productId}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Location</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.location}}
+          </ng-template>
+        </ngx-datatable-column>
+
+
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Reorder Point</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.reorderPoint}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Max Quantity</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.max_qty}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Current Inventory</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            {{row.currentInventory}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Status</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            <span *ngIf="row.status === 1" class="badge badge-success">Available</span>
+            <span *ngIf="row.status === 0" class="badge badge-danger">Disabled</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column [sortable]="false">
+          <ng-template ngx-datatable-header-template>
+            <span>Delete</span>
+          </ng-template>
+          <ng-template let-row="row" let-rowIndex="rowIndex" ngx-datatable-cell-template>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            <button class="btn btn-link py-0" type="button" aria-label="Delete Location Name 2">
+              <svg class="icon delete-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                viewBox="0 0 16 16">
+                <path
+                  d="M16,2H11V0H5V2H0V3H2V13.5A2.5,2.5,0,0,0,4.5,16h7A2.5,2.5,0,0,0,14,13.5V3h2ZM6,1h4V2H6Zm7,12.5A1.5,1.5,0,0,1,11.5,15h-7A1.5,1.5,0,0,1,3,13.5V3H13Z" />
+                <polygon points="8.51 14 7.5 14 7.5 13.5 7.5 4 8.49 4 8.51 4.5 8.51 14" />
+                <polygon points="11.51 14 10.51 14 10.49 13.5 10.49 4 11.49 4 11.51 4.5 11.51 14" />
+                <polygon points="5.5 14 4.5 14 4.5 13.5 4.5 4 5.5 4 5.5 4.5 5.5 14" />
+              </svg>
+            </button>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+      <app-paginator [items]="products" (changePage)="onPageIndexChange($event)"></app-paginator>
+    </div>
+
+    <div class="row mt-2 mb-4">
+      <div class="col">
+        <div class="d-flex align-items-center">
+          <strong class="pr-2">With selected: </strong> <button class="btn btn-outline-primary mr-2" type="button">Print
+            Barcodes</button> <button class="btn btn-outline-primary mr-2" type="button">Replenish</button>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-flex align-items-center justify-content-lg-end">
+          <strong class="pr-2">Print/Export Stockroom:</strong>
+          <div class="btn btn-link px-0 pr-2">
+            <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 14.93 16">
+              <path
+                d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z" />
+            </svg>
+            <span class="sr-only">Print Stockroom</span>
+          </div>
+          <div class="btn btn-link px-0 pr-2">
+            <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 14.93 16">
+              <path
+                d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z" />
+            </svg>
+            <span class="sr-only">Export Stockroom as PDF</span>
+          </div>
+          <div class="btn btn-link px-0 pr-2">
+            <svg class="icon print-icon" width="16px" height="16px" xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 14.93 16">
+              <path
+                d="M2.26 0a.53.53 0 0 0-.48.53v5.16h-.53A1.25 1.25 0 0 0 0 6.93v5.69a1.25 1.25 0 0 0 1.24 1.24h.54v1.6a.53.53 0 0 0 .53.53h10.32a.53.53 0 0 0 .53-.53v-1.6h.53a1.25 1.25 0 0 0 1.24-1.24V6.93a1.25 1.25 0 0 0-1.24-1.24H2.85V1.07h7.41l1.84 1.87v1.5a.535.535 0 1 0 1.07 0V2.72a.53.53 0 0 0-.15-.37L10.86.16a.53.53 0 0 0-.39-.16H2.26zm-1 6.76h12.43a.17.17 0 0 1 .18.18v5.69a.17.17 0 0 1-.18.18h-.53v-.9a.53.53 0 0 0-.53-.53H2.26a.53.53 0 0 0-.48.53v.89h-.53a.17.17 0 0 1-.18-.18V6.93a.17.17 0 0 1 .18-.17zm1.21.71a.53.53 0 0 0 0 1.06h1.8a.535.535 0 1 0 0-1.07h-1.8zm8.23 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.56-.53zm1.78 0a.53.53 0 1 0 .53.53.53.53 0 0 0-.54-.53zm-9.6 5h9.24v2.49H2.85v-2.52z" />
+            </svg>
+            <span class="sr-only">Export Stockroom as Spreadsheet</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

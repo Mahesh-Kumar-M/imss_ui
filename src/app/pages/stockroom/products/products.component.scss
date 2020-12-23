@@ -78,3 +78,9 @@ datatable-footer.datatable-footer {
 .mt-10{
 margin-top: 10px;
 }
+
+
+.datatable-body.datatable-body{
+    height: 400px !important;
+    overflow-y: auto;
+}

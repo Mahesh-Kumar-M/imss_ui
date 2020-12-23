@@ -23,7 +23,7 @@ export class LocationsComponent implements OnInit {
   constructor(private stockroomService: StockroomService) { }
 
   ngOnInit(): void {
-    this.onSearch();
+    this.getLocationData();
   }
 
   onPageIndexChange(pageData: any) {
@@ -33,13 +33,28 @@ export class LocationsComponent implements OnInit {
     this.currentPage = pageData.currPage;
   }
 
+  getLocationData() {
+    const payload = {
+      stockroomId: '8525',
+      userId: 64554,
+    };
+    this.stockroomService.viewLocation(payload).subscribe(
+      (res: any) => {
+        if (res && res.LocationList) {
+          this.locations = res.LocationList;
+        }
+      },
+      () => { }
+    );
+  }
+
   onSearch() {
     const payload = {
       locationName: this.searchText,
       stockroomId: '8525',
       userId: 64554,
     };
-    this.stockroomService.viewLocation(payload).subscribe(
+    this.stockroomService.getlocationDetails(payload).subscribe(
       (res: any) => {
         if (res && res.LocationList) {
           this.locations = res.LocationList;
